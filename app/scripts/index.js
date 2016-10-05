@@ -5,14 +5,21 @@ var Handlebars = require('handlebars');
 var charactersUrl = 'http://gateway.marvel.com/v1/public/characters';
 var apiKey = 'ts=1&hash=21bd2e1b96821f4b508e0dd04ba254bd&apikey=809f574f31a7e23a17adc1f6a3631a58';
 
+// Do an ajax request with jquery
 $.ajax(charactersUrl + '?' + apiKey).then(start);
 
+/*
+Start the program
+*/
 function start(ajaxResult){
   console.log('AJAX request is now done');
   var characters = ajaxResult.data.results;
   displayCharacters(characters);
 }
 
+/*
+Display some awesome comic characters
+*/
 function displayCharacters(characterList){
   console.log('displayCharacters');
 
@@ -31,6 +38,9 @@ function displayCharacters(characterList){
   });
 }
 
+/*
+Another server request
+*/
 function fetchComics(character){
   var comicUrl = character.comics.collectionURI + '?' + apiKey;
   $.ajax(comicUrl).then(displayComics);
