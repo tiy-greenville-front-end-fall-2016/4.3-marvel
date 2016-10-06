@@ -39,13 +39,16 @@ function displayCharacters(characterList){
 }
 
 /*
-Another server request
+ Another API request
 */
 function fetchComics(character){
   var comicUrl = character.comics.collectionURI + '?' + apiKey;
   $.ajax(comicUrl).then(displayComics);
 }
 
+/*
+Display list of comics each character is in
+*/
 function displayComics(comicsList){
   console.log(comicsList);
   var $modal = $('.js-modal');
